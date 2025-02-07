@@ -7,16 +7,16 @@
         <div class="dropdown">
             <button class="dropbtn">Каталог</button>
             <div class="dropdown-content">
-                <a href="/shoes">Взуття</a>
-                <a href="/shorts">Шорти</a>
-                <a href="/trousers">Штани</a>
-                <a href="/t_shirt">Футболки</a>
-                <a href="/socks">Шкарпетки</a>
-                <a href="/hoodies">Худі</a>
-                <a href="/jackets">Кофти</a>
+                <a href="/products/shoes">Взуття</a>
+                <a href="/products/shorts">Шорти</a>
+                <a href="/products/trousers">Штани</a>
+                <a href="/products/t_shirt">Футболки</a>
+                <a href="/products/socks">Шкарпетки</a>
+                <a href="/products/hoodies">Худі</a>
+                <a href="/products/jackets">Кофти</a>
             </div>
         </div>
-        <a href="/instock-page">Наявність товару</a>
+        <a href="/products/instock-page">Наявність товару</a>
         <div class="search-container">
             <input type="text" class="search-input" id="search-input" placeholder="Шукати...">
             <img src="/images/search.png" width="20" class="search-button" id="search-button">
@@ -32,7 +32,7 @@
     document.getElementById('search-button').addEventListener('click', function() {
         const searchValue = document.getElementById('search-input').value.trim();
         if (searchValue) {
-            window.location.href = `/instock-page/${searchValue}`;
+            window.location.href = `/products/instock-page/${searchValue}`;
         }
     });
 
@@ -41,7 +41,7 @@
         if (e.key === 'Enter') {
             const searchValue = document.getElementById('search-input').value.trim();
             if (searchValue) {
-                window.location.href = `/instock-page/${searchValue}`;
+                window.location.href = `/products/instock-page/${searchValue}`;
             }
         }
     });
