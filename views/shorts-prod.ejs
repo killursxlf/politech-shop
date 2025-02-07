@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_polytechnic.png">
+    <link rel="stylesheet" type="text/css" href="/fonts/barkentina/barkentina.css">
+    <link rel="stylesheet" href="/styles/shoes-prod_style.css">    
+    <script src="/JavaScript/product.js"></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main class="product-list">
+        <div class="product" data-sku="<%= product.sku %>"> 
+            <img src="/images/shorts/<%= product.article %>.jpg" class="product-image" alt="<%= product.title %>"> 
+            <div class="cont-product">
+                <h1 class="product-title"><%= product.name %></h1> 
+                <p class="product-sku">Артикул: <%= product.article %></p> 
+                <p class="product-price">Ціна: <%= product.price %> грн</p> 
+                <h2>Характеристики</h2>
+                <p>Колір: <%= product.color %></p> 
+                <p class="product-sizes-title">Розміри:</p>
+                <ul class="product-sizes">
+                    <% product.sizes.split(' ').forEach(function(size) { %>
+                        <li><%= size.trim() %></li>
+                    <% }); %>
+                </ul>                
+                <h2>Опис</h2>
+                <p class="product-description"><%= product.description %></p> 
+                <button class="add-to-cart">Додати до кошика</button>
+            </div>
+        </div>
+    </main>          
+</body>
+</html>

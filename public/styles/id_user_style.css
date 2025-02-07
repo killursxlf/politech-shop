@@ -1,0 +1,178 @@
+body {
+    font-family: barkentina;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px 70px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.logo {
+    width: 50;
+}
+
+.navigation{
+    display: flex;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #201f1f;
+    font: sans-serif; 
+    /* min-width: 90px; */
+    padding: 16px;
+}
+
+.navigation a:hover {
+    background-color: #201f1f;
+    color: white;
+}
+
+/* Кнопка выпадающего списка */
+.dropbtn {
+    font-family: barkentina;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+  
+  /* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+  /* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #f4f4f4;
+    z-index: 1;
+}
+  
+  /* Ссылки внутри выпадающего списка */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+  /* Изменение цвета выпадающих ссылок при наведении курсора */
+.dropdown-content a:hover {
+    background-color: #201f1f;
+}
+  
+  /* Показать выпадающее меню при наведении курсора */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+  /* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+.dropdown:hover .dropbtn {
+    background-color: #201f1f;
+    color: #f4f4f4;
+}
+
+/* Контейнер для поля поиска */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 300px;
+    background-color: #fff;
+  }
+  
+  /* Поле ввода */
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+  }
+  
+  /* Кнопка поиска */
+  .search-button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* Стили при наведении */
+  .search-container:hover {
+    border-color: #888;
+  }
+  
+  .search-button:hover {
+    color: #555;
+  }
+
+.profil-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        height: 100vh;
+    
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.avatar {
+    margin-right: 20px;
+}
+
+.avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #201f1f;
+}
+
+.actions {
+    flex-grow: 1;
+    text-align: right;
+}
+
+.order-history-button {
+    background-color: #201f1f;
+    color: white;
+    font-size: 14px;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.order-history-button:hover {
+    background-color: #585858;
+}
+
+.order-history-button:active {
+    background-color: #201f1f;
+}

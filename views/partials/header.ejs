@@ -1,0 +1,48 @@
+<header class="header">
+    <div class="logo">
+        <img src="/images/logo_polytechnic.png" width="50" alt="Sample Image">
+    </div>
+    <nav class="navigation">
+        <a href="/">Головна</a>
+        <div class="dropdown">
+            <button class="dropbtn">Каталог</button>
+            <div class="dropdown-content">
+                <a href="/shoes">Взуття</a>
+                <a href="/shorts">Шорти</a>
+                <a href="/trousers">Штани</a>
+                <a href="/t_shirt">Футболки</a>
+                <a href="/socks">Шкарпетки</a>
+                <a href="/hoodies">Худі</a>
+                <a href="/jackets">Кофти</a>
+            </div>
+        </div>
+        <a href="/instock-page">Наявність товару</a>
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Шукати...">
+            <img src="/images/search.png" width="20" class="search-button" id="search-button">
+        </div>
+        <a href="admin_page.html">Адмін</a>
+        <a href="id_page.html">Вхід по ID</a>
+        <a href="/cart">Кошик</a>
+    </nav>
+</header>
+
+<script>
+    // Поиск по артикулу
+    document.getElementById('search-button').addEventListener('click', function() {
+        const searchValue = document.getElementById('search-input').value.trim();
+        if (searchValue) {
+            window.location.href = `/instock-page/${searchValue}`;
+        }
+    });
+
+    // Дополнительно можно сделать так, чтобы поиск работал при нажатии на Enter
+    document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const searchValue = document.getElementById('search-input').value.trim();
+            if (searchValue) {
+                window.location.href = `/instock-page/${searchValue}`;
+            }
+        }
+    });
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo_polytechnic.png">
+    <link rel="stylesheet" type="text/css" href="fonts/barkentina/barkentina.css">
+    <link rel="stylesheet" href="styles/instock_style.css">
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/product.js"></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="sort-container">
+        <label for="sort">Сортування:</label>
+        <select id="sort" onchange="sortProducts()">
+            <option value="priceAsc">Ціна: за зростанням</option>
+            <option value="priceDesc">Ціна: за спаданням</option>
+        </select>
+    </div>
+
+    <div class="product-grid">
+        <% instock_page.forEach(function(product) { %>
+        <div class="product">
+            <a href="/instock-page/<%= product.article %>">
+                <img src="/images/instock_page/<%= product.article %>.jpg" alt="<%= product.article %>">
+                <h3><%= product.name %></h3>
+                <p class="price" data-price="<%= product.price %>"><%= product.price %> грн</p>
+            </a>
+        </div>
+        <% }); %>
+    </div>
+</body>
+<script>
+    function sortProducts() {
+        const sortValue = document.getElementById('sort').value;
+        const productGrid = document.querySelector('.product-grid');
+        const products = Array.from(productGrid.getElementsByClassName('product'));
+
+        products.sort((a, b) => {
+            const priceA = parseInt(a.querySelector('.price').getAttribute('data-price'));
+            const priceB = parseInt(b.querySelector('.price').getAttribute('data-price'));
+
+            if (sortValue === 'priceAsc') {
+                return priceA - priceB; 
+            }
+
+            if (sortValue === 'priceDesc') {
+                return priceB - priceA; 
+            }
+
+            return 0; 
+        });
+
+        products.forEach(product => productGrid.appendChild(product));
+    }
+</script>
+</html>

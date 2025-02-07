@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_polytechnic.png">
+    <link rel="stylesheet" type="text/css" href="/fonts/barkentina/barkentina.css">
+    <link rel="stylesheet" href="/styles/basket_style.css">
+    <script src="/JavaScript/cart.js"></script> 
+</head>
+<body>
+    <%- include('partials/header') %> 
+
+    <div class="cart">
+        <h1 class="cart-title">Ваш кошик</h1>
+        <div class="cart-items" id="cart-items">
+            <% if (cart.length === 0) { %>
+                <p>Корзина пуста</p>
+            <% } else { %>
+                <% cart.forEach(function(product) { %>
+                    <div class="cart-item">
+                        <img src="/images/shoes/<%= product.article %>.jpg" class="product-image" alt="<%= product.name %>">
+                        <div class="cart-item-details">
+                            <h1 class="product-title"><%= product.name %></h1> 
+                            <p class="cart-item-sku">Артикул: <%= product.article %></p>
+                            <p class="cart-item-price">Ціна: <%= product.price %> грн</p>
+                            <p class="cart-item-size">Розмір: <%= product.size %></p>
+                            <div class="cart-item-actions">
+                                <input type="number" class="cart-item-quantity" value="1" min="1">
+                                <button class="remove-from-cart">Видалити</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+                <div class="cart-total">
+                    <p>Сума: <%= total %> грн</p> 
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
