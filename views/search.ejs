@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Результаты поиска для "<%= query %>"</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_polytechnic.png">
+  <link rel="stylesheet" type="text/css" href="/fonts/barkentina/barkentina.css">
+  <link rel="stylesheet" href="/styles/product.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <h1>Результати пошуку для "<%= query %>"</h1>
+  <% if (results.length === 0) { %>
+    <p>Ничего не найдено</p>
+  <% } else { %>
+    <div class="product-grid">
+      <% results.forEach(function(product) { %>
+        <div class="product">
+          <a href="/products/<%= product.category %>/<%= product.article %>">
+            <img src="/images/<%= product.category %>/<%= product.article %>.jpg" alt="<%= product.name %>">
+            <h3><%= product.name %></h3>
+            <p class="price"><%= product.price %> грн</p>
+          </a>
+        </div>
+      <% }); %>
+    </div>
+  <% } %>
+</body>
+</html>

@@ -136,18 +136,18 @@ body {
   font-family: barkentina;
 }
 
-/* Заголовки */
+
 h1 {
   margin: 30px 0px 0px;
   text-align: center;
 }
 
-/* Стили для продуктов */
+
 .product-grid {
   margin: 0 200px;
-  display: grid; /* Используем grid для большей гибкости */
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки на экранах шире 1024px */
-  gap: 20px; /* Промежутки между продуктами */
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px; 
   padding: 10px;
   background-color: #fff;
 }
@@ -159,7 +159,9 @@ h1 {
   border-radius: 8px;
   background-color: #fff;
   transition: transform 0.3s ease;
-  width: 100%; /* Растягиваем продукт на всю ширину колонки */
+  width: 100%;
+  text-decoration: none; 
+  color: inherit; 
 }
 
 .product img {
@@ -183,23 +185,51 @@ h1 {
 .product:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-decoration: none; 
+  color: inherit; 
 }
 
-/* Медиазапросы для адаптивности */
+.product a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit ;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.product a h2 {
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+}
+
+.product a h3 {
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+}
+
+.product a h2 p {
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+}
+
+
 @media (max-width: 1024px) {
   .product-grid {
-      grid-template-columns: repeat(3, 1fr); /* 3 колонки для экрана среднего размера */
+      grid-template-columns: repeat(3, 1fr); 
   }
 }
 
 @media (max-width: 768px) {
   .product-grid {
-      grid-template-columns: repeat(2, 1fr); /* 2 колонки для мобильных устройств */
+      grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 480px) {
   .product-grid {
-      grid-template-columns: 1fr; /* 1 колонка для маленьких экранов */
+      grid-template-columns: 1fr; 
   }
 }

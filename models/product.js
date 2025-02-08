@@ -1,4 +1,3 @@
-// models/product.js
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define('Product', {
       article: {
@@ -23,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       currency: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
         type: DataTypes.STRING,
         allowNull: false,
       },

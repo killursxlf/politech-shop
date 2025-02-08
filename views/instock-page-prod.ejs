@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_polytechnic.png">
     <link rel="stylesheet" type="text/css" href="/fonts/barkentina/barkentina.css">
     <link rel="stylesheet" href="/styles/shoes-prod_style.css">    
+    <script src="/JavaScript/cart.js"></script>
     <script src="/JavaScript/product.js"></script>
 </head>
 <body>
@@ -15,7 +16,7 @@
         <div class="product" data-sku="<%= product.sku %>"> 
             <img src="/images/instock_page/<%= product.article %>.jpg" class="product-image" alt="<%= product.title %>"> 
             <div class="cont-product">
-                <h1 class="product-title"><%= product.name %></h1> 
+                <h1 class="product-title"><%= product.title %></h1> 
                 <p class="product-sku">Артикул: <%= product.article %></p> 
                 <p class="product-price">Ціна: <%= product.price %> грн</p> 
                 <h2>Характеристики</h2>
@@ -23,12 +24,21 @@
                 <p class="product-sizes-title">Розміри:</p>
                 <ul class="product-sizes">
                     <% product.sizes.split(' ').forEach(function(size) { %>
-                        <li><%= size.trim() %></li>
+                        <li class="size-option" data-size="<%= size.trim() %>">
+                            <%= size.trim() %>
+                        </li>
                     <% }); %>
-                </ul>                
+                </ul>                              
                 <h2>Опис</h2>
                 <p class="product-description"><%= product.description %></p> 
-                <button class="add-to-cart">Додати до кошика</button>
+                <button class="add-to-cart"
+                    data-article="<%= product.article %>"
+                    data-name="<%= product.name %>"
+                    data-price="<%= product.price %>"
+                    data-image="/images/instock_page/<%= product.article %>.jpg"
+                    data-sizes="<%= product.sizes %>">
+                    Додати до кошика
+                </button>
             </div>
         </div>
     </main>          

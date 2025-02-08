@@ -215,4 +215,32 @@ h1{
 .product:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
+    text-decoration: none; 
+    color: inherit; 
+  }
+  
+  .product a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit ;
+    border-bottom: none;
+    box-shadow: none;
+  }
+  
+  .product a h2 {
+    text-decoration: none;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .product a h3 {
+    text-decoration: none;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .product a h2 p {
+    text-decoration: none;
+    border: none;
+    box-shadow: none;
+  }

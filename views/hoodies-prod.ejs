@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_polytechnic.png">
     <link rel="stylesheet" type="text/css" href="/fonts/barkentina/barkentina.css">
-    <link rel="stylesheet" href="/styles/shoes-prod_style.css">    
+    <link rel="stylesheet" href="/styles/shoes-prod_style.css">
+    <script src="/JavaScript/cart.js"></script>
     <script src="/JavaScript/product.js"></script>
 </head>
 <body>
@@ -23,12 +24,21 @@
                 <p class="product-sizes-title">Розміри:</p>
                 <ul class="product-sizes">
                     <% product.sizes.split(' ').forEach(function(size) { %>
-                        <li><%= size.trim() %></li>
+                        <li class="size-option" data-size="<%= size.trim() %>">
+                            <%= size.trim() %>
+                        </li>
                     <% }); %>
-                </ul>                
+                </ul>                              
                 <h2>Опис</h2>
                 <p class="product-description"><%= product.description %></p> 
-                <button class="add-to-cart">Додати до кошика</button>
+                <button class="add-to-cart"
+                    data-article="<%= product.article %>"
+                    data-name="<%= product.name %>"
+                    data-price="<%= product.price %>"
+                    data-image="/images/hoodies/<%= product.article %>.jpg"
+                    data-sizes="<%= product.sizes %>">
+                    Додати до кошика
+                </button>
             </div>
         </div>
     </main>          
