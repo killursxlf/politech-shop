@@ -1,13 +1,10 @@
-// controllers/cartController.js
-const { Product } = require('../models/product'); // Импорт модели Product (Sequelize)
+const { Product } = require('../models/product'); 
 
-// Отображение страницы корзины
 exports.getCart = (req, res) => {
   const cart = req.session.cart || [];
   res.render('cart', { cart });
 };
 
-// Добавление товара в корзину
 exports.addToCart = async (req, res) => {
   const { article, size, category } = req.body;
 

@@ -1,7 +1,5 @@
-// controllers/productController.js
 const connection = require('../config/database');
 
-// -------------------- Shoes --------------------
 exports.getShoes = async (req, res) => {
   try {
     const query = 'SELECT * FROM shoes';
@@ -197,9 +195,8 @@ exports.getJacketsByArticle = async (req, res) => {
   }
 };
 
-// -------------------- In-stock page (через хранимые процедуры) --------------------
+// -------------------- In-stock page --------------------
 
-// GET /products/instock-page?sort=priceAsc
 exports.getInstockPage = async (req, res) => {
   try {
     let sortOrder = req.query.sort || 'priceAsc';
@@ -213,7 +210,6 @@ exports.getInstockPage = async (req, res) => {
   }
 };
 
-// GET /products/instock-page/:article
 exports.getInstockPageProduct = async (req, res) => {
   try {
     const article = req.params.article;
@@ -221,7 +217,6 @@ exports.getInstockPageProduct = async (req, res) => {
     const [results] = await connection.query(query, [article]);
     if (results[0] && results[0].length > 0) {
       const product = results[0][0];
-      // Если поле sizes не строка – приводим к строке
       if (product.sizes && typeof product.sizes !== 'string') {
         product.sizes = String(product.sizes);
       }

@@ -1,20 +1,14 @@
-// cart.js – Управление корзиной через localStorage
-
-// Функция для загрузки корзины из localStorage (если её нет, возвращаем пустой массив)
 function loadCart() {
     return JSON.parse(localStorage.getItem('cart')) || [];
   }
   
-  // Функция для сохранения корзины в localStorage
   function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
-  
-  // Функция добавления товара в корзину
+
   function addToCart(article, name, price, image, size) {
     let cart = loadCart();
-  
-    // Если товар может отличаться по размеру, учитываем его при поиске
+
     let existingProduct = cart.find(item => item.article === article && item.size === size);
   
     if (existingProduct) {
@@ -27,7 +21,6 @@ function loadCart() {
     displayCartItems();
   }
   
-  // Функция обновления счетчика товаров (например, для шапки сайта)
   function updateCartCount() {
     let cart = loadCart();
     let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -37,8 +30,7 @@ function loadCart() {
       cartCountElement.textContent = totalItems;
     }
   }
-  
-  // Функция отрисовки товаров в корзине и расчёта итоговой суммы
+
   function displayCartItems() {
     let cart = loadCart();
     let cartContainer = document.getElementById('cart-items');
@@ -46,7 +38,6 @@ function loadCart() {
   
     if (!cartContainer) return;
     
-    // Очищаем контейнер перед обновлением
     cartContainer.innerHTML = '';
     
     if (cart.length === 0) {
@@ -82,8 +73,6 @@ function loadCart() {
     }
   }
   
-  // Функция обновления количества товара в корзине
-  // Если newQuantity <= 0, товар удаляется
   function updateCartItem(article, size, newQuantity) {
     let cart = loadCart();
     let item = cart.find(item => item.article === article && item.size === size);
@@ -98,8 +87,7 @@ function loadCart() {
       displayCartItems();
     }
   }
-  
-  // Функция удаления товара из корзины
+
   function removeFromCart(article, size) {
     let cart = loadCart();
     cart = cart.filter(item => !(item.article === article && item.size === size));
@@ -107,13 +95,11 @@ function loadCart() {
     updateCartCount();
     displayCartItems();
   }
-  
-  // При загрузке страницы обновляем интерфейс корзины
+
   document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
     displayCartItems();
   
-    // Добавляем обработчик для изменения количества через input
     document.getElementById('cart-items').addEventListener('change', (e) => {
       if (e.target && e.target.matches('.cart-item-quantity')) {
         const newQuantity = parseInt(e.target.value);

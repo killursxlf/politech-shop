@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вход в админ панель</title>
+  <link rel="stylesheet" href="/styles/style.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Вход в админ панель</h2>
+      <p>Введите ваши данные для входа</p>
+
+      <% if (error) { %>
+        <div class="toast error"><%= error %></div>
+      <% } %>
+
+      <% if (success) { %>
+        <div class="toast success"><%= success %></div>
+      <% } %>
+
+      <form action="/login" method="POST">
+        <label for="username">Имя пользователя</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Введите логин"
+          value="<%= username || '' %>"
+          required
+        />
+
+        <label for="password">Пароль</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Введите пароль"
+          required
+        />
+
+        <button type="submit">Войти в панель</button>
+      </form>
+
+      <div class="demo-info">
+        Демо: <strong>admin</strong> / <strong>admin123</strong>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

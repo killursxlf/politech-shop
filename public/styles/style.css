@@ -1,4 +1,12 @@
 /* Стили для всего документа */
+@font-face {
+  font-family: 'barkentina';
+  src: url('/fonts/barkentina/barkentina1.woff2') format('woff2'),
+       url('/fonts/barkentina/barkentina1.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
     font-family: barkentina;
     margin: 0;
@@ -244,3 +252,81 @@ h1{
     border: none;
     box-shadow: none;
   }
+
+
+  /* Контейнер формы */
+.login-container {
+  flex: 1; /* чтобы занять всё оставшееся пространство */
+  display: flex;
+  justify-content: center; /* горизонтальный центр */
+  align-items: center;     /* вертикальный центр */
+  padding: 20px; /* небольшой отступ */ /* для наглядности можно цвет поставить */
+}
+
+/* Карточка */
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  background: white;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+/* Заголовок */
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.login-card p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Метки */
+.login-card label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Поля */
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Кнопка */
+.login-card button {
+    width: 100%;
+    padding: 10px;
+    background-color: #201f1f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: barkentina;
+}
+
+.login-card button:hover {
+    background-color: #333;
+}
+
+/* Сообщение */
+.login-card .demo-info {
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    margin-top: 15px;
+}

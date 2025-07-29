@@ -1,0 +1,330 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f7f7f7;
+    color: #333;
+}
+header {
+    background: #201f1f;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    margin: 0;
+    font-weight: 400;
+}
+nav {
+    display: flex;
+    gap: 15px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+nav a:hover, nav a.active {
+    background-color: #444;
+}
+.container {
+    display: flex;
+    padding: 20px 40px;
+    gap: 30px;
+    min-height: calc(100vh - 60px);
+}
+aside {
+    width: 250px;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+aside h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+main {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+section {
+    margin-bottom: 40px;
+}
+section h3 {
+    margin-top: 0;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+th, td {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+th {
+    background-color: #f0f0f0;
+}
+button {
+    background-color: #201f1f;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+button:hover {
+    background-color: #444;
+}
+.btn-danger {
+    background-color: #c0392b;
+}
+.btn-danger:hover {
+    background-color: #e74c3c;
+}
+form input[type="text"], form input[type="number"] {
+    padding: 6px 10px;
+    font-size: 14px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 180px;
+}
+form {
+    margin-bottom: 15px;
+}
+.stats {
+    display: flex;
+    gap: 30px;
+}
+.stat-box {
+    background: #201f1f;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+}
+.stat-box h4 {
+    margin: 0 0 10px;
+    font-weight: 400;
+}
+.stat-box p {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.table-scroll {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.table-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-scroll thead {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.table-scroll thead th {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.scroll-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.scroll-body table {
+  width: 100%;
+}
+
+.scroll-body td {
+  padding: 10px 12px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.modal-content label {
+  font-weight: 600;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 7px 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  border: none;
+  padding: 8px 15px;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.btn-secondary:hover {
+  background-color: #999;
+}
+
+#sizesContainer label {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: normal;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+#popupForm {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+#popupForm input[type="text"],
+#popupForm input[type="number"],
+#popupForm input[type="file"],
+#popupForm select,
+#popupForm textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+#popupForm select[multiple] {
+    height: 120px;
+}
+#popupForm button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+#popupForm input[type="text"],
+#popupForm input[type="number"],
+#popupForm input[type="file"],
+#popupForm select,
+#popupForm textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none; 
+  font-family: Arial, sans-serif;
+}
+
+#popupForm textarea {
+  height: 80px; 
+}
+
+#popupForm select[multiple] {
+  height: 120px; 
+  overflow-y: auto;
+}
+
+#popupForm input[type="text"],
+#popupForm input[type="number"],
+#popupForm select {
+  height: 36px;
+}
+
+#sizesContainer label {
+  user-select: none;
+  cursor: pointer;
+  padding: 5px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-size: 14px;
+}
+
+#sizesContainer label:hover {
+  border-color: #4caf50;
+}
+
+#sizesContainer input[type="checkbox"] {
+  cursor: pointer;
+}

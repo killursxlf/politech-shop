@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админ панель</title>
+  <link rel="stylesheet" href="/styles/admin.css" />
+</head>
+<body>
+
+<header>
+  <h1>Админ панель</h1>
+  <nav>
+    <a href="/">Магазин</a>
+    <a href="#products">Товары</a>
+    <a href="#orders">Заказы</a>
+    <a href="#stats">Статистика</a>
+  </nav>
+</header>
+
+<div class="container">
+  <aside>
+    <h2>Профиль</h2>
+    <p><strong>Имя:</strong> <%= admin.name %></p>
+    <p><strong>Email:</strong> <%= admin.email %></p>
+    <p><strong>Роль:</strong> <%= admin.role %></p>
+  </aside>
+
+  <main>
+    <section id="profile">
+      <h3>Информация о профиле</h3>
+      <p>Добро пожаловать, <strong><%= admin.name %></strong>! Здесь вы можете управлять магазином.</p>
+    </section>
+
+    <section id="products">
+      <h3>Управление товарами</h3>
+
+      <form id="searchForm">
+        <input type="text" name="name" placeholder="Название товара" />
+        <input type="number" name="minPrice" placeholder="Мин. цена" min="0" step="0.01" />
+        <input type="number" name="maxPrice" placeholder="Макс. цена" min="0" step="0.01" />
+        <button type="submit">Искать</button>
+      </form>
+
+      <button id="showAddFormBtn" style="margin-top: 1rem;">Добавить товар</button>
+
+      <div class="table-scroll" style="margin-top: 1rem;">
+        <table style="table-layout: fixed; width: 100%;">
+          <thead>
+            <tr>
+              <th style="width: 10%;">ID</th>
+              <th style="width: 55%;">Название</th>
+              <th style="width: 20%;">Цена</th>
+              <th style="width: 15%;">Действия</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="scroll-body" style="max-height: 300px; overflow-y: auto;">
+          <table style="table-layout: fixed; width: 100%;">
+            <tbody id="productsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="orders">
+      <h3>Заказы</h3>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Номер заказа</th><th>Покупатель</th><th>Сумма</th><th>Статус</th></tr>
+          </thead>
+        </table>
+        <div class="scroll-body">
+          <table>
+            <tbody>
+              <% orders.forEach(order => { %>
+                <tr>
+                  <td><%= order.id %></td>
+                  <td><%= order.customerName %></td>
+                  <td><%= order.currency %><%= (parseFloat(order.total) || 0).toFixed(2) %></td>
+                  <td><%= order.status %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats">
+      <h3>Статистика</h3>
+      <div class="stats">
+        <div class="stat-box">
+          <h4>Всего товаров</h4>
+          <p><%= stats.totalProducts %></p>
+        </div>
+        <div class="stat-box">
+          <h4>Всего заказов</h4>
+          <p><%= stats.totalOrders %></p>
+        </div>
+        <div class="stat-box">
+          <h4>Доход</h4>
+          <p>₴<%= stats.totalRevenue.toFixed(2) %></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Попап -->
+<div id="overlay">
+  <form id="popupForm" action="/admin/products/add" method="POST" enctype="multipart/form-data">
+    <h3>Добавить товар</h3>
+    <input type="text" name="article" placeholder="Артикул" required />
+    <input type="text" name="name" placeholder="Название товара" required />
+    <textarea name="description" placeholder="Описание товара" rows="3"></textarea>
+    <input type="number" name="price" placeholder="Цена" required min="0" step="0.01" />
+    <input type="file" name="image" accept="image/*" required />
+
+    <select id="categorySelect" name="category" required>
+      <option value="">Выберите категорию</option>
+      <option value="hoodies">Толстовки</option>
+      <option value="jackets">Куртки</option>
+      <option value="shoes">Обувь</option>
+      <option value="shorts">Шорты</option>
+      <option value="socks">Носки</option>
+      <option value="trousers">Брюки</option>
+      <option value="t_shirt">Футболки</option>
+    </select>
+
+    <input type="text" name="color" placeholder="Цвет" />
+
+    <fieldset id="sizesFieldset" disabled>
+      <legend>Выберите размеры</legend>
+      <div id="sizesContainer" class="size-checkboxes"></div>
+    </fieldset>
+
+    <div style="margin-top: 10px;">
+      <button type="submit">Добавить</button>
+      <button type="button" id="cancelAddFormBtn">Отмена</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const productsData = <%- JSON.stringify(products) %>;
+</script>
+<script src="/JavaScript/productsFilter.js"></script>
+<script src="/JavaScript/sizeSelector.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const showBtn = document.getElementById('showAddFormBtn');
+    const overlay = document.getElementById('overlay');
+    const cancelBtn = document.getElementById('cancelAddFormBtn');
+    const popupForm = document.getElementById('popupForm');
+
+    showBtn.addEventListener('click', () => {
+      overlay.style.display = 'flex';
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      popupForm.reset();
+      document.getElementById('sizesContainer').innerHTML = '';
+      document.getElementById('sizesFieldset').disabled = true;
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+        popupForm.reset();
+        document.getElementById('sizesContainer').innerHTML = '';
+        document.getElementById('sizesFieldset').disabled = true;
+      }
+    });
+  });
+</script>
+</body>
+</html>

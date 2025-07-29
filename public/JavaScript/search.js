@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-form input[name="q"]');
-    const resultsContainer = document.getElementById('search-results'); // создайте контейнер на странице для вывода результатов
+    const resultsContainer = document.getElementById('search-results'); 
   
     if (searchInput) {
       searchInput.addEventListener('input', async () => {
         const query = searchInput.value.trim();
-        if (query.length < 2) { // можно задавать минимальную длину запроса
+        if (query.length < 2) { 
           resultsContainer.innerHTML = '';
           return;
         }
